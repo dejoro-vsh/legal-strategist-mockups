@@ -6,44 +6,156 @@
     <title>Master Legal Strategist | V1 Premium</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { margin: 0; font-family: 'Prompt', sans-serif; background-color: #0a0a0a; color: #f5f5f5; }
-        header { padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; }
-        .logo { font-size: 1.5rem; font-weight: 600; color: #d4af37; }
-        .hero { text-align: center; padding: 100px 20px; background: radial-gradient(circle at center, #1a1a1a, #0a0a0a); }
-        .badge { display: inline-block; padding: 8px 16px; background: rgba(212, 175, 55, 0.1); color: #d4af37; border: 1px solid #d4af37; border-radius: 50px; font-size: 0.9rem; margin-bottom: 20px; }
-        h1 { font-size: 3rem; margin: 0 0 20px; max-width: 800px; margin-inline: auto; line-height: 1.2; }
-        h2 { font-size: 1.2rem; font-weight: 300; color: #a3a3a3; max-width: 600px; margin-inline: auto; margin-bottom: 40px; }
+        body { margin: 0; font-family: 'Prompt', sans-serif; background-color: #0a0a0a; color: #f5f5f5; line-height: 1.6; }
+        header { padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; position: sticky; top: 0; background: rgba(10,10,10,0.9); z-index: 100; backdrop-filter: blur(10px); }
+        .logo { font-size: 1.5rem; font-weight: 600; color: #d4af37; letter-spacing: 2px; }
+        .hero { text-align: center; padding: 120px 20px; background: radial-gradient(circle at center top, #1a1a1a, #0a0a0a); }
+        .badge { display: inline-block; padding: 8px 16px; background: rgba(212, 175, 55, 0.1); color: #d4af37; border: 1px solid #d4af37; border-radius: 50px; font-size: 0.9rem; margin-bottom: 20px; letter-spacing: 1px; }
+        h1 { font-size: 3.5rem; margin: 0 0 20px; max-width: 900px; margin-inline: auto; line-height: 1.3; }
+        h2 { font-size: 1.2rem; font-weight: 300; color: #a3a3a3; max-width: 700px; margin-inline: auto; margin-bottom: 50px; }
+        
         .cta-group { display: flex; gap: 20px; justify-content: center; }
-        .btn-primary { background: #d4af37; color: #000; padding: 15px 30px; text-decoration: none; font-weight: 600; border-radius: 5px; transition: background 0.3s; }
-        .btn-primary:hover { background: #b5952f; }
-        .btn-secondary { background: transparent; color: #f5f5f5; padding: 15px 30px; text-decoration: none; font-weight: 600; border: 1px solid #555; border-radius: 5px; transition: border-color 0.3s; }
-        .btn-secondary:hover { border-color: #d4af37; }
-        .trust-bar { display: flex; justify-content: center; gap: 50px; padding: 40px; border-top: 1px solid #222; border-bottom: 1px solid #222; background: #111; }
+        .btn-primary { background: #d4af37; color: #000; padding: 15px 35px; text-decoration: none; font-weight: 600; border-radius: 4px; transition: all 0.3s; }
+        .btn-primary:hover { background: #b5952f; transform: translateY(-2px); }
+        .btn-secondary { background: transparent; color: #d4af37; padding: 15px 35px; text-decoration: none; font-weight: 600; border: 1px solid #d4af37; border-radius: 4px; transition: all 0.3s; }
+        .btn-secondary:hover { background: rgba(212,175,55,0.1); }
+        
+        .trust-bar { display: flex; justify-content: center; gap: 80px; padding: 50px 20px; border-top: 1px solid #222; border-bottom: 1px solid #222; background: #111; }
         .trust-item { text-align: center; }
-        .trust-number { font-size: 2rem; font-weight: bold; color: #d4af37; display: block; }
-        .trust-text { font-size: 0.9rem; color: #888; }
+        .trust-number { font-size: 2.5rem; font-weight: bold; color: #d4af37; display: block; font-family: 'Inter', sans-serif; }
+        .trust-text { font-size: 1rem; color: #888; text-transform: uppercase; letter-spacing: 1px; }
+
+        section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 2.5rem; color: #d4af37; margin-bottom: 60px; }
+        
+        /* Pain Points */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: #141414; border: 1px solid #333; padding: 40px; border-radius: 8px; text-align: center; transition: border-color 0.3s; }
+        .card:hover { border-color: #d4af37; }
+        .card h3 { color: #fff; font-size: 1.4rem; margin-bottom: 15px; }
+        .card p { color: #aaa; }
+
+        /* Comparison */
+        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 40px; background: #111; border-radius: 8px; overflow: hidden; }
+        .comparison-table th, .comparison-table td { padding: 20px; text-align: left; border-bottom: 1px solid #222; }
+        .comparison-table th { background: #1a1a1a; font-weight: 600; font-size: 1.1rem; }
+        .comparison-table th.highlight { background: rgba(212,175,55,0.1); color: #d4af37; }
+        .comparison-table td.highlight { background: rgba(212,175,55,0.05); color: #fff; }
+        
+        /* Closing CTA */
+        .closing { text-align: center; background: #1a1a1a; padding: 100px 20px; border-radius: 12px; margin: 50px auto; max-width: 1000px; border: 1px solid #333; }
+        .closing h2 { font-size: 2.5rem; color: #fff; margin-bottom: 20px; }
+        .closing p { color: #a3a3a3; margin-bottom: 40px; font-size: 1.1rem; }
+
+        footer { text-align: center; padding: 40px; border-top: 1px solid #222; color: #666; font-size: 0.9rem; }
+    </section>
     </style>
 </head>
 <body>
     <header>
         <div class="logo">MASTER LEGAL</div>
         <nav>
-            <a href="#" class="btn-primary" style="padding: 10px 20px;">นัดหมายที่ปรึกษา</a>
+            <a href="#contact" class="btn-primary" style="padding: 10px 20px;">นัดหมายที่ปรึกษา</a>
         </nav>
     </header>
-    <section class="hero">
+
+    <div class="hero">
         <div class="badge">🛡️ Business Legal Strategy & Risk Management</div>
         <h1>ปกป้องธุรกิจ ปิดจุดตายสัญญา<br>และสร้างการเติบโตที่ไร้ข้อพิพาท</h1>
         <h2>เปลี่ยนภาษากฎหมายที่ซับซ้อนให้เป็นกลยุทธ์ทางธุรกิจที่คุณควบคุมได้ ตรวจร่างสัญญา จัดโครงสร้างหุ้นส่วน และดูแลด้านแรงงาน โดยทนายความธุรกิจ</h2>
         <div class="cta-group">
-            <a href="#" class="btn-primary">นัดประเมินความเสี่ยงธุรกิจ (30 นาที)</a>
+            <a href="#contact" class="btn-primary">นัดประเมินความเสี่ยงธุรกิจ (30 นาที)</a>
             <a href="#" class="btn-secondary">ดาวน์โหลด: คัมภีร์ 10 จุดตายสัญญา</a>
         </div>
-    </section>
-    <section class="trust-bar">
-        <div class="trust-item"><span class="trust-number">500+</span><span class="trust-text">สัญญาที่ตรวจ</span></div>
+    </div>
+
+    <div class="trust-bar">
+        <div class="trust-item"><span class="trust-number">500+</span><span class="trust-text">สัญญาที่ตรวจสอบแล้ว</span></div>
         <div class="trust-item"><span class="trust-number">100+</span><span class="trust-text">SME & Startup</span></div>
-        <div class="trust-item"><span class="trust-number">95%</span><span class="trust-text">เจรจายุติก่อนฟ้อง</span></div>
+        <div class="trust-item"><span class="trust-number">95%</span><span class="trust-text">เจรจายุติก่อนฟ้องร้อง</span></div>
+    </div>
+
+    <section>
+        <h2 class="section-title">ทำไมธุรกิจคุณถึงกำลังตกอยู่ในความเสี่ยง?</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>ใช้สัญญาโหลดฟรี</h3>
+                <p>สัญญามาตรฐานจากอินเทอร์เน็ตมักมีช่องโหว่ ไม่ครอบคลุมบริบทเฉพาะของธุรกิจคุณ ทำให้บังคับใช้จริงในศาลไม่ได้เมื่อเกิดปัญหา</p>
+            </div>
+            <div class="card">
+                <h3>ไร้แผนรับมือข้อพิพาทหุ้นส่วน</h3>
+                <p>การเริ่มต้นธุรกิจโดยไม่มี Shareholders Agreement ที่รัดกุม คือระเบิดเวลาที่รอวันทำลายความสัมพันธ์และมูลค่าบริษัท</p>
+            </div>
+            <div class="card">
+                <h3>กฎหมายแรงงาน & PDPA</h3>
+                <p>สัญญาจ้างที่ล้าสมัยและไม่มีระบบจัดการข้อมูลส่วนบุคคล เสี่ยงต่อการโดนฟ้องร้องจากพนักงานและค่าปรับมหาศาลจากรัฐ</p>
+            </div>
+        </div>
     </section>
+
+    <section style="background: #111;">
+        <h2 class="section-title">บริการหลักของเรา (Core Services)</h2>
+        <div class="grid-3">
+            <div class="card" style="background: #1a1a1a;">
+                <h3 style="color: #d4af37;">Project-Based</h3>
+                <p style="margin-bottom: 20px;"><strong>บริการร่างและตรวจสัญญาธุรกิจ</strong></p>
+                <p>NDA, Shareholders Agreement, Service Agreement, Software Contract เพื่ออุดรอยรั่วและปกป้องผลประโยชน์สูงสุด</p>
+            </div>
+            <div class="card" style="background: #1a1a1a;">
+                <h3 style="color: #d4af37;">Monthly Retainer</h3>
+                <p style="margin-bottom: 20px;"><strong>ที่ปรึกษากฎหมายประจำบริษัท</strong></p>
+                <p>เสมือนมี In-house Counsel คอยดูแล ให้คำปรึกษาด่วน รีวิวสัญญารายวัน และจัดการเอกสารทางกฎหมายให้องค์กรอย่างต่อเนื่อง</p>
+            </div>
+            <div class="card" style="background: #1a1a1a;">
+                <h3 style="color: #d4af37;">Dispute Resolution</h3>
+                <p style="margin-bottom: 20px;"><strong>การระงับข้อพิพาทและเจรจา</strong></p>
+                <p>ใช้ทักษะการเจรจาเชิงกลยุทธ์เพื่อหาทางออกร่วมกัน ลดความเสียหาย ไกล่เกลี่ยให้จบก่อนถึงชั้นศาลเพื่อประหยัดเวลาและค่าใช้จ่าย</p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="section-title">ทำไมต้อง Master Legal Strategist?</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>เรื่องที่ต้องพิจารณา</th>
+                    <th>ทนายความแบบดั้งเดิม</th>
+                    <th class="highlight">Master Legal Strategist (เรา)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>มุมมองการทำงาน</strong></td>
+                    <td>เน้นข้อกฎหมายแบบท่องจำ อาจทำให้ดีลธุรกิจสะดุด</td>
+                    <td class="highlight"><strong>Business-First Mindset:</strong> หาทางออกที่ถูกต้องตามกฎหมาย และสนับสนุนให้ยอดขายเกิด</td>
+                </tr>
+                <tr>
+                    <td><strong>การสื่อสาร</strong></td>
+                    <td>ใช้ภาษากฎหมายที่ซับซ้อน เข้าใจยาก</td>
+                    <td class="highlight"><strong>Plain Language:</strong> แปลงกฎหมายเป็นภาษาธุรกิจที่ผู้บริหารเข้าใจได้ทันที</td>
+                </tr>
+                <tr>
+                    <td><strong>รูปแบบการแก้ปัญหา</strong></td>
+                    <td>ตั้งรับ (Reactive) รอให้เกิดเรื่องแล้วค่อยไปว่ากันในศาล</td>
+                    <td class="highlight"><strong>Proactive Prevention:</strong> อุดช่องโหว่ล่วงหน้า ประหยัดค่าฟ้องร้องหลักล้าน</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="contact">
+        <div class="closing">
+            <h2 style="margin-bottom: 10px;">อย่ารอให้ "หมายศาล" มาถึงบริษัท</h2>
+            <p>ความผิดพลาดทางกฎหมายเพียงจุดเดียว อาจทำลายสิ่งที่คุณสร้างมาทั้งชีวิต<br>พูดคุยกับเราวันนี้ เพื่อวางรากฐานความปลอดภัยให้ธุรกิจของคุณ</p>
+            <a href="#" class="btn-primary" style="font-size: 1.1rem; padding: 20px 40px;">นัดประเมินความเสี่ยงฟรี (30 นาที)</a>
+            <p style="margin-top: 20px; font-size: 0.9rem;">ไม่มีค่าใช้จ่ายแอบแฝง สำหรับ 10 บริษัทแรกของเดือนนี้เท่านั้น</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Master Legal Strategist. All rights reserved.</p>
+        <p>นโยบายความเป็นส่วนตัว (Privacy Policy) | คำแถลงตามมรรยาททนายความ</p>
+    </footer>
 </body>
 </html>
